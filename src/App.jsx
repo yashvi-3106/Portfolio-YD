@@ -16,16 +16,30 @@ const SkillCard = ({ icon: Icon, name }) => (
 const ProjectCard = ({ title, description, demo, github }) => (
   <motion.div
     whileHover={{ y: -5 }}
-    className="bg-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col justify-between text-center w-full" // 'w-full' ensures it takes up available space
+    className="bg-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col justify-between text-center w-full"
   >
     <h3 className="text-lg font-bold mb-2">{title}</h3>
-    
-    {/* This wrapper ensures that description is centered vertically in cases of varying content */}
-    <div className="flex-grow flex items-center justify-center mb-3"> 
+
+    <div className="flex-grow flex items-center justify-center mb-3">
       <p className="text-gray-300 text-sm">{description}</p>
     </div>
-    
-    <div className="flex gap-4 mt-auto"> {/* mt-auto pushes the demo links to the bottom if the content is smaller */}
+
+    {/* Show video only for FocusFuze */}
+    {title === 'FocusFuze' && (
+      <div className="mb-3">
+        <a href="https://youtu.be/pY5dqOt33Js" target="_blank" rel="noopener noreferrer">
+          <iframe
+            className="w-full h-40 rounded-lg"
+            src="https://www.youtube.com/embed/pY5dqOt33Js"
+            title="FocusFuze Demo"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </a>
+      </div>
+    )}
+
+    <div className="flex gap-4 mt-auto">
       <a
         href={demo}
         target="_blank"
@@ -45,6 +59,7 @@ const ProjectCard = ({ title, description, demo, github }) => (
     </div>
   </motion.div>
 );
+
 
 
 
